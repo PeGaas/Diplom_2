@@ -9,7 +9,8 @@ class TestCreateOrder:
     def test_create_order_with_authorization_true(self, authorization_user, get_ingredients):
         # Создать заказ
         payload = {"ingredients": get_ingredients}
-        response = requests.post(f'{MAIN_URL}{CREATE_ORDER}', data=payload, headers={'Authorization': authorization_user.json()['accessToken']})
+        response = requests.post(f'{MAIN_URL}{CREATE_ORDER}', data=payload,
+                                 headers={'Authorization': authorization_user.json()['accessToken']})
 
         assert response.status_code == 200 and response.json()['success'] == True
 
